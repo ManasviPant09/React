@@ -1,51 +1,23 @@
-import Card from "./Card";
-import Appdata from "./Appdata";
 import './App.css';
-import Netflix from "./Netflix";
-import Amazon from "./Amazon";
-{/* <Card
-imgsrc = {Appdata[0].imgsrc}
-cardtitle = {Appdata[0].cardtitle}
-link={Appdata[0].link}
-/> */}
-const p =   'Amazon';
-const Preference = () =>{
-  if(p==='Netflix'){
-    return(
-      <Netflix />
-    );
+import React, { useState } from "react";
+const App=()=>{
+  let d = new Date();
+  let n = d.toLocaleTimeString();
+  const state = useState();
+  const [time,setTime] = useState(n);
+  const getTime=()=>{
+    let d = new Date();
+    let n = d.toLocaleTimeString();
+    setTime(n);
   }
-  else{
-    return(
-      <Amazon />
-    );
-  }
-};
-const App = () => (
-    <>
-    <div className="body">
-      <div className="heading">
-        Netflix recommendations
-      </div>
-      {p==='Netflix'? <Netflix /> : <Amazon />}
-      {/* <Card
-        imgsrc = {Appdata[0].imgsrc}
-        cardcategory = {Appdata[0].cardcategory}
-        cardtitle = {Appdata[0].cardtitle}
-        link={Appdata[0].link}
-        /> */}
-      {/* {Appdata.map(function data(val){
-        return(
-          <Card 
-          // key = {val.id}
-          imgsrc = {val.imgsrc}
-          cardcategory = {val.cardcategory}
-          cardtitle = {val.cardtitle}
-          link={val.link}
-          />
-        );
-      })} */}
-    </div>
-    </>
-);
+  setInterval(getTime,1000);
+  return(
+  <>
+  <div className = "container">
+    <h1 className="heading">{time}</h1>
+    {/* <button className="button" onClick={getTime}>GET TIME</button> */}
+  </div>
+  </>
+  );
+}
 export default App;
